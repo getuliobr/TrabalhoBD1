@@ -1,0 +1,150 @@
+DROP TABLE IF EXISTS TRABALHA_EM_UM;
+DROP TABLE IF EXISTS CADASTRA;
+DROP TABLE IF EXISTS ATENDE;
+DROP TABLE IF EXISTS TEM;
+
+DROP TABLE IF EXISTS PRODUTO;
+DROP TABLE IF EXISTS FORNECEDOR;
+DROP TABLE IF EXISTS TURNO;
+DROP TABLE IF EXISTS DEPENDENTE;
+DROP TABLE IF EXISTS PEDIDO;
+DROP TABLE IF EXISTS ENTREGADOR;
+DROP TABLE IF EXISTS ATENDENTE;
+DROP TABLE IF EXISTS FUNCIONARIO;
+DROP TABLE IF EXISTS CLIENTE;
+DROP TABLE IF EXISTS ENDERECO;
+
+CREATE TABLE TURNO( -- Colocar dia da semana
+  id INTEGER,
+  inicio TIME,
+  fim TIME,
+  diaSemana VARCHAR(20),
+
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE FUNCIONARIO(
+  cpf CHAR(11),
+  salario DECIMAL(10,2),
+  nome VARCHAR(50),
+
+  PRIMARY KEY (cpf)
+);
+
+CREATE TABLE TRABALHA_EM_UM(
+  id INTEGER,
+  cpf CHAR(11),
+
+  PRIMARY KEY (id, cpf),
+  FOREIGN KEY (id) REFERENCES TURNO(id),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf)
+);
+
+CREATE TABLE DEPENDENTE( # Fraca
+  cpfPai CHAR(11),
+  cpf CHAR(11),
+  nome VARCHAR(50),
+  dataNasc DATE,
+
+  PRIMARY KEY (cpf, cpfPai),
+  FOREIGN KEY (cpfPai) REFERENCES FUNCIONARIO(cpf)
+);
+
+CREATE TABLE ENTREGADOR(
+  cpf CHAR(11),
+  cnh CHAR(11),
+  veiculo VARCHAR(50),
+  pontosNaCnh INTEGER,
+
+  PRIMARY KEY (cpf),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+);
+
+CREATE TABLE ATENDENTE(
+  cpf CHAR(11),
+  local CHAR(50),
+  treinamento BOOLEAN,
+  supervisor CHAR(50),
+
+  PRIMARY KEY (cpf),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+);
+
+CREATE TABLE CLIENTE(
+  cpf CHAR(11),
+  telefone VARCHAR(15),
+  nome VARCHAR(50),
+
+  PRIMARY KEY (cpf)
+);
+
+CREATE TABLE ENDERECO(
+  id INTEGER,
+  logradouro VARCHAR(50),
+  numero INTEGER,
+  bairro VARCHAR(50),
+  complemento VARCHAR(100),
+
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE PEDIDO(
+  cpfCliente CHAR(11),
+  numero INTEGER,
+  estado VARCHAR(20),
+  data DATE,
+  idEndereco INTEGER,
+  cpfEntregador VARCHAR(11),
+
+  FOREIGN KEY (cpfEntregador) REFERENCES ENTREGADOR(cpf),
+  FOREIGN KEY (idEndereco) REFERENCES ENDERECO(id),
+
+  PRIMARY KEY (cpfCliente, numero),
+  FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf)
+);
+
+CREATE TABLE CADASTRA(
+  id INTEGER,
+  cpf CHAR(11),
+
+  PRIMARY KEY (id, cpf),
+  FOREIGN KEY (id) REFERENCES ENDERECO(id),
+  FOREIGN KEY (cpf) REFERENCES CLIENTE(cpf)
+);
+
+CREATE TABLE ATENDE(
+  cpfCliente CHAR(11),
+  cpfAtendente CHAR(11),
+
+  PRIMARY KEY (cpfCliente, cpfAtendente),
+  FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf),
+  FOREIGN KEY (cpfAtendente) REFERENCES ATENDENTE(cpf)
+);
+
+CREATE TABLE FORNECEDOR(
+  cnpj CHAR(14),
+  telefone VARCHAR(15),
+  nome VARCHAR(50),
+  
+  PRIMARY KEY (cnpj)
+);
+
+CREATE TABLE PRODUTO(
+  codigo INTEGER,
+  dataVencimento DATE,
+  preco DECIMAL(10,2),
+  cnpjFornecedor CHAR(14),
+
+  FOREIGN KEY (cnpjFornecedor) REFERENCES FORNECEDOR(cnpj),
+  PRIMARY KEY (codigo)
+);
+
+CREATE TABLE TEM(
+  codigoProduto INTEGER,
+  cpfCliente CHAR(11),
+  numeroPedido INTEGER,
+
+  PRIMARY KEY (codigoProduto, cpfCliente, numeroPedido),
+  FOREIGN KEY (codigoProduto) REFERENCES PRODUTO(codigo),
+  FOREIGN KEY (cpfCliente, numeroPedido) REFERENCES PEDIDO(cpfCliente, numero)
+);
