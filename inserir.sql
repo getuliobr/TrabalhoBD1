@@ -144,5 +144,5 @@ INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("19902570038", "54222
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("19902570038", "46206628019", "Rahyssa Marroquim Sanches", '2008-05-12');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("19902570038", "24912077020", "Zhen Tedim Reino", '2008-05-12');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "09549341054", "Nuno Gomes Salvado", '2015-09-26');
-INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "09549341054", "Lavínia Marcondes Silvaa", '2009-08-07');
+INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "63897245000", "Lavínia Marcondes Silvaa", '2009-08-07');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("27510474086", "42166146040", "Telma Borja Azambuja", '2012-04-04');
