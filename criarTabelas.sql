@@ -62,9 +62,9 @@ CREATE TABLE ENTREGADOR(
 
 CREATE TABLE ATENDENTE(
   cpf CHAR(11),
-  local CHAR(50),
+  local VARCHAR(50),
   treinamento BOOLEAN,
-  supervisor CHAR(50),
+  supervisor VARCHAR(50),
 
   PRIMARY KEY (cpf),
   FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE

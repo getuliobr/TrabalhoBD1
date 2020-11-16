@@ -3,6 +3,16 @@ DELETE FROM FUNCIONARIO WHERE cpf >= 0;
 DELETE FROM TRABALHA_EM_UM WHERE id >= 0;
 DELETE FROM DEPENDENTE WHERE cpfPai >= 0; */
 
+
+/* CREATE TABLE TURNO(
+  id INTEGER,
+  inicio TIME,
+  fim TIME,
+  diaSemana VARCHAR(20),
+
+  PRIMARY KEY (id)
+); */
+
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (0, '00:00', '08:00', "Segunda"); 
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (1, '08:00', '16:00', "Segunda");
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (2, '16:00', '00:00', "Segunda");
@@ -18,6 +28,15 @@ INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (11, '16:00', '00:00', "Qui
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (12, '00:00', '08:00', "Sexta");
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (13, '08:00', '16:00', "Sexta");
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (14, '16:00', '00:00', "Sexta");
+
+
+/* CREATE TABLE FUNCIONARIO(
+  cpf CHAR(11),
+  salario DECIMAL(10,2),
+  nome VARCHAR(50),
+
+  PRIMARY KEY (cpf)
+); */
 
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("27510474086", 1337.17, "Alonso Jobim Chaves");
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("97246412018", 1337.17, "Fábio Brito Aveiro");
@@ -39,6 +58,16 @@ INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("90119343002", 1337.17, "And
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("68744115008", 1337.17, "Erika Fraga Carvalheiro");
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("16518940000", 1337.17, "Rodolfo Freixo Cascais");
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("28497169018", 1337.17, "Ivan Vergueiro Ribeiro");
+
+
+/* CREATE TABLE TRABALHA_EM_UM(
+  id INTEGER,
+  cpf CHAR(11),
+
+  PRIMARY KEY (id, cpf),
+  FOREIGN KEY (id) REFERENCES TURNO(id),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf)
+); */
 
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(0, "27510474086");
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(6, "27510474086");
@@ -136,6 +165,17 @@ INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(8, "32415583049");
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(11, "32415583049");
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(14, "32415583049");
 
+
+/* CREATE TABLE DEPENDENTE(
+  cpfPai CHAR(11),
+  cpf CHAR(11),
+  nome VARCHAR(50),
+  dataNasc DATE,
+
+  PRIMARY KEY (cpf, cpfPai),
+  FOREIGN KEY (cpfPai) REFERENCES FUNCIONARIO(cpf)
+); */
+
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("97246412018", "99945306073", "Adelina Ximenes Vilariça", '2008-12-28');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("97246412018", "98182093031", "Alycia Modesto Sobreira", '2005-04-05');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("13400701033", "89902131000", "Kelly Bacelar Jardim", '2013-03-02');
@@ -146,3 +186,36 @@ INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("19902570038", "24912
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "09549341054", "Nuno Gomes Salvado", '2015-09-26');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "63897245000", "Lavínia Marcondes Silvaa", '2009-08-07');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("27510474086", "42166146040", "Telma Borja Azambuja", '2012-04-04');
+
+
+/* CREATE TABLE ENTREGADOR(
+  cpf CHAR(11),
+  cnh CHAR(11),
+  veiculo VARCHAR(50),
+  pontosNaCnh INTEGER,
+
+  PRIMARY KEY (cpf),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+); */
+
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("60646553054", "86106745648", "Uno", 0);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("19517847076", "03654822607", "Ford Ka", 3);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("10510302009", "12989289666", "Ford Fiesta", 8);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("31598768026", "63991738009", "Honda Bis", 3);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("32415583049", "34339334183", "Honda CG125", 3);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("83673373013", "96578021340", "Yamaha 125", 3);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("90119343002", "34861737203", "Gol", 6);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("68744115008", "93685638279", "Kombi", 0);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("16518940000", "49672429336", "Fiorino", 3);
+INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("28497169018", "83207836666", "Pampa", 9);
+
+
+/* CREATE TABLE ATENDENTE(
+  cpf CHAR(11),
+  local CHAR(50),
+  treinamento BOOLEAN,
+  supervisor CHAR(50),
+
+  PRIMARY KEY (cpf),
+  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+); */
