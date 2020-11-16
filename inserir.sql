@@ -212,10 +212,21 @@ INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("28497169018", "83
 
 /* CREATE TABLE ATENDENTE(
   cpf CHAR(11),
-  local CHAR(50),
+  local VARCHAR(50),
   treinamento BOOLEAN,
-  supervisor CHAR(50),
+  supervisor VARCHAR(50),
 
   PRIMARY KEY (cpf),
   FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
 ); */
+
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("27510474086", "caixa", FALSE, "");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("97246412018", "caixa", FALSE, "");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("13400701033", "caixa", TRUE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("87030576071", "caixa", TRUE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("49083220079", "caixa", TRUE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("12678609014", "caixa", FALSE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("56502561012", "caixa", FALSE, "");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("79747047055", "padaria", FALSE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("19902570038", "açougue", FALSE, "Micaela Doutel Tuna");
+INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("00563807040", "hortifruti", FALSE, "Micaela Doutel Tuna");
