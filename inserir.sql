@@ -230,3 +230,91 @@ INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("56502561012",
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("79747047055", "padaria", FALSE, "Micaela Doutel Tuna");
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("19902570038", "açougue", FALSE, "Micaela Doutel Tuna");
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("00563807040", "hortifruti", FALSE, "Micaela Doutel Tuna");
+
+
+/* CREATE TABLE CLIENTE(
+  cpf CHAR(11),
+  telefone VARCHAR(15),
+  nome VARCHAR(50),
+
+  PRIMARY KEY (cpf)
+); */
+
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("05278819022", "+5545961781324", "Abraão Aranha Rosado");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("16252235016", "+5544918327964", "Melyssa Mourão Marreiro");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("03290472051", "+554437198246", "Guilherme Tinoco Belém");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("32700924070", "+554482463719", "Alessandro Montenegro Olaio");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("56008935071", "+5544919933772", "Teresa Souto Rei");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("35688009004", "+5511963524174", "Dora Lopes Pardo");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("49186036025", "+554456238954", "Imran Assunção Sobral");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("52342455003", "+5537951247985", "Liliana Barreiros Azeredo");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("87786749055", "+5534993251458", "Douglas Henrique Palma Cisneiros");
+INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("55456515008", "+551140028922", "Paulo Bonilha Hipólito");
+
+
+/* CREATE TABLE ENDERECO(
+  id INTEGER,
+  logradouro VARCHAR(50),
+  numero INTEGER,
+  bairro VARCHAR(50),
+  complemento VARCHAR(100),
+
+  PRIMARY KEY (id)
+); */
+
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(0, "Rua dos Bobos", 0, "Muito Esmero", "Casa que não tem teto, não tem nada");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(1, "Rua Deputado Heitor Alencar Furtado", 137, "Cidade Industrial", "Esquina");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(2, "Rua Ana Imoto", 42, "Jardim Dona Luiza", "Casa de dois andar");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(3, "Rua Augusto Adão", 18, "Ipê", "Não tem");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(4, "Rua Dois Vizinhos", 99, "Estados", "Perto do shopping");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(5, "Rua Irene Dutka", 26, "Pinheirinho", "Do lado do mercado municipal");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(6, "Rua Solimões", 35, "Zona 03", "Antiga rodoviaria");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(7, "Rua Lagoa Dourada", 13, "Campo Comprido", "De frente ao clube");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(8, "Jardinete Rodrigo David e Silva", 37, "Portão", "Do lado do condominio");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(9, "Avenida Joaçaba", 89, "São José dos Pinhais", "Na avenida");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(10, "Avenida do Porto", 87, "Portugal", "Igreja do Castelo Templário");
+INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(11, "Via Futebol Clube do Porto", 41, "Porto", "Perto do Mercado do João");
+
+
+/* CREATE TABLE CADASTRA(
+  id INTEGER,
+  cpf CHAR(11),
+
+  PRIMARY KEY (id, cpf),
+  FOREIGN KEY (id) REFERENCES ENDERECO(id),
+  FOREIGN KEY (cpf) REFERENCES CLIENTE(cpf)
+); */
+
+INSERT INTO CADASTRA(id, cpf) VALUES(0, "05278819022");
+INSERT INTO CADASTRA(id, cpf) VALUES(1, "16252235016");
+INSERT INTO CADASTRA(id, cpf) VALUES(2, "03290472051");
+INSERT INTO CADASTRA(id, cpf) VALUES(3, "32700924070");
+INSERT INTO CADASTRA(id, cpf) VALUES(4, "56008935071");
+INSERT INTO CADASTRA(id, cpf) VALUES(5, "35688009004");
+INSERT INTO CADASTRA(id, cpf) VALUES(6, "49186036025");
+INSERT INTO CADASTRA(id, cpf) VALUES(7, "52342455003");
+INSERT INTO CADASTRA(id, cpf) VALUES(8, "87786749055");
+INSERT INTO CADASTRA(id, cpf) VALUES(9, "55456515008");
+INSERT INTO CADASTRA(id, cpf) VALUES(10, "16252235016");
+INSERT INTO CADASTRA(id, cpf) VALUES(11, "32700924070");
+
+
+/* CREATE TABLE ATENDE(
+  cpfCliente CHAR(11),
+  cpfAtendente CHAR(11),
+
+  PRIMARY KEY (cpfCliente, cpfAtendente),
+  FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf),
+  FOREIGN KEY (cpfAtendente) REFERENCES ATENDENTE(cpf)
+); */
+
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("05278819022", "27510474086");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("16252235016", "97246412018");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("03290472051", "13400701033");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("32700924070", "87030576071");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("56008935071", "49083220079");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("35688009004", "12678609014");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("49186036025", "56502561012");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("52342455003", "79747047055");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("87786749055", "19902570038");
+INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("55456515008", "00563807040");
