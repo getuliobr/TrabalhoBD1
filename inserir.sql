@@ -1,17 +1,17 @@
-/* DELETE FROM TURNO WHERE id >= 0;
-DELETE FROM FUNCIONARIO WHERE cpf >= 0;
-DELETE FROM TRABALHA_EM_UM WHERE id >= 0;
-DELETE FROM DEPENDENTE WHERE cpfPai >= 0; */
+-- DELETE FROM TURNO WHERE id >= 0;
+-- DELETE FROM FUNCIONARIO WHERE cpf >= 0;
+-- DELETE FROM TRABALHA_EM_UM WHERE id >= 0;
+-- DELETE FROM DEPENDENTE WHERE cpfPai >= 0;
 
 
-/* CREATE TABLE TURNO(
-  id INTEGER,
-  inicio TIME,
-  fim TIME,
-  diaSemana VARCHAR(20),
+-- CREATE TABLE TURNO(
+--   id INTEGER,
+--   inicio TIME,
+--   fim TIME,
+--   diaSemana VARCHAR(20),
 
-  PRIMARY KEY (id)
-); */
+--   PRIMARY KEY (id)
+-- );
 
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (0, '00:00', '08:00', "Segunda"); 
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (1, '08:00', '16:00', "Segunda");
@@ -30,13 +30,13 @@ INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (13, '08:00', '16:00', "Sex
 INSERT INTO TURNO(id, inicio, fim, diaSemana) VALUES (14, '16:00', '00:00', "Sexta");
 
 
-/* CREATE TABLE FUNCIONARIO(
-  cpf CHAR(11),
-  salario DECIMAL(10,2),
-  nome VARCHAR(50),
+-- CREATE TABLE FUNCIONARIO(
+--   cpf CHAR(11),
+--   salario DECIMAL(10,2),
+--   nome VARCHAR(50),
 
-  PRIMARY KEY (cpf)
-); */
+--   PRIMARY KEY (cpf)
+-- );
 
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("27510474086", 1337.17, "Alonso Jobim Chaves");
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("97246412018", 1337.17, "Fábio Brito Aveiro");
@@ -60,14 +60,14 @@ INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("16518940000", 1337.17, "Rod
 INSERT INTO FUNCIONARIO(cpf, salario, nome) VALUES ("28497169018", 1337.17, "Ivan Vergueiro Ribeiro");
 
 
-/* CREATE TABLE TRABALHA_EM_UM(
-  id INTEGER,
-  cpf CHAR(11),
+-- CREATE TABLE TRABALHA_EM_UM(
+--   id INTEGER,
+--   cpf CHAR(11),
 
-  PRIMARY KEY (id, cpf),
-  FOREIGN KEY (id) REFERENCES TURNO(id),
-  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf)
-); */
+--   PRIMARY KEY (id, cpf),
+--   FOREIGN KEY (id) REFERENCES TURNO(id),
+--   FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf)
+-- );
 
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(0, "27510474086");
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(6, "27510474086");
@@ -166,15 +166,15 @@ INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(11, "32415583049");
 INSERT INTO TRABALHA_EM_UM(id, cpf) VALUES(14, "32415583049");
 
 
-/* CREATE TABLE DEPENDENTE(
-  cpfPai CHAR(11),
-  cpf CHAR(11),
-  nome VARCHAR(50),
-  dataNasc DATE,
+-- CREATE TABLE DEPENDENTE(
+--   cpfPai CHAR(11),
+--   cpf CHAR(11),
+--   nome VARCHAR(50),
+--   dataNasc DATE,
 
-  PRIMARY KEY (cpf, cpfPai),
-  FOREIGN KEY (cpfPai) REFERENCES FUNCIONARIO(cpf)
-); */
+--   PRIMARY KEY (cpf, cpfPai),
+--   FOREIGN KEY (cpfPai) REFERENCES FUNCIONARIO(cpf)
+-- );
 
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("97246412018", "99945306073", "Adelina Ximenes Vilariça", '2008-12-28');
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("97246412018", "98182093031", "Alycia Modesto Sobreira", '2005-04-05');
@@ -188,15 +188,15 @@ INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("00563807040", "63897
 INSERT INTO DEPENDENTE(cpfPai, cpf, nome, dataNasc) VALUES("27510474086", "42166146040", "Telma Borja Azambuja", '2012-04-04');
 
 
-/* CREATE TABLE ENTREGADOR(
-  cpf CHAR(11),
-  cnh CHAR(11),
-  veiculo VARCHAR(50),
-  pontosNaCnh INTEGER,
+-- CREATE TABLE ENTREGADOR(
+--   cpf CHAR(11),
+--   cnh CHAR(11),
+--   veiculo VARCHAR(50),
+--   pontosNaCnh INTEGER,
 
-  PRIMARY KEY (cpf),
-  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
-); */
+--   PRIMARY KEY (cpf),
+--   FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+-- );
 
 INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("60646553054", "86106745648", "Uno", 0);
 INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("19517847076", "03654822607", "Ford Ka", 3);
@@ -210,15 +210,15 @@ INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("16518940000", "49
 INSERT INTO ENTREGADOR(cpf, cnh, veiculo, pontosNaCnh) VALUES("28497169018", "83207836666", "Pampa", 9);
 
 
-/* CREATE TABLE ATENDENTE(
-  cpf CHAR(11),
-  local VARCHAR(50),
-  treinamento BOOLEAN,
-  supervisor VARCHAR(50),
+-- CREATE TABLE ATENDENTE(
+--   cpf CHAR(11),
+--   local VARCHAR(50),
+--   treinamento BOOLEAN,
+--   supervisor VARCHAR(50),
 
-  PRIMARY KEY (cpf),
-  FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
-); */
+--   PRIMARY KEY (cpf),
+--   FOREIGN KEY (cpf) REFERENCES FUNCIONARIO(cpf) ON DELETE CASCADE
+-- );
 
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("27510474086", "caixa", FALSE, "");
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("97246412018", "caixa", FALSE, "");
@@ -232,13 +232,13 @@ INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("19902570038",
 INSERT INTO ATENDENTE(cpf, local, treinamento, supervisor) VALUES("00563807040", "hortifruti", FALSE, "Micaela Doutel Tuna");
 
 
-/* CREATE TABLE CLIENTE(
-  cpf CHAR(11),
-  telefone VARCHAR(15),
-  nome VARCHAR(50),
+-- CREATE TABLE CLIENTE(
+--   cpf CHAR(11),
+--   telefone VARCHAR(15),
+--   nome VARCHAR(50),
 
-  PRIMARY KEY (cpf)
-); */
+--   PRIMARY KEY (cpf)
+-- );
 
 INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("05278819022", "+5545961781324", "Abraão Aranha Rosado");
 INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("16252235016", "+5544918327964", "Melyssa Mourão Marreiro");
@@ -252,15 +252,15 @@ INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("87786749055", "+5534993251458",
 INSERT INTO CLIENTE(cpf, telefone, nome) VALUES("55456515008", "+551140028922", "Paulo Bonilha Hipólito");
 
 
-/* CREATE TABLE ENDERECO(
-  id INTEGER,
-  logradouro VARCHAR(50),
-  numero INTEGER,
-  bairro VARCHAR(50),
-  complemento VARCHAR(100),
+-- CREATE TABLE ENDERECO(
+--   id INTEGER,
+--   logradouro VARCHAR(50),
+--   numero INTEGER,
+--   bairro VARCHAR(50),
+--   complemento VARCHAR(100),
 
-  PRIMARY KEY (id)
-); */
+--   PRIMARY KEY (id)
+-- );
 
 INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(0, "Rua dos Bobos", 0, "Muito Esmero", "Casa que não tem teto, não tem nada");
 INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(1, "Rua Deputado Heitor Alencar Furtado", 137, "Cidade Industrial", "Esquina");
@@ -276,14 +276,14 @@ INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(10, "Av
 INSERT INTO ENDERECO(id, logradouro, numero, bairro, complemento) VALUES(11, "Via Futebol Clube do Porto", 41, "Porto", "Perto do Mercado do João");
 
 
-/* CREATE TABLE CADASTRA(
-  id INTEGER,
-  cpf CHAR(11),
+-- CREATE TABLE CADASTRA(
+--   id INTEGER,
+--   cpf CHAR(11),
 
-  PRIMARY KEY (id, cpf),
-  FOREIGN KEY (id) REFERENCES ENDERECO(id),
-  FOREIGN KEY (cpf) REFERENCES CLIENTE(cpf)
-); */
+--   PRIMARY KEY (id, cpf),
+--   FOREIGN KEY (id) REFERENCES ENDERECO(id),
+--   FOREIGN KEY (cpf) REFERENCES CLIENTE(cpf)
+-- );
 
 INSERT INTO CADASTRA(id, cpf) VALUES(0, "05278819022");
 INSERT INTO CADASTRA(id, cpf) VALUES(1, "16252235016");
@@ -299,14 +299,14 @@ INSERT INTO CADASTRA(id, cpf) VALUES(10, "16252235016");
 INSERT INTO CADASTRA(id, cpf) VALUES(11, "32700924070");
 
 
-/* CREATE TABLE ATENDE(
-  cpfCliente CHAR(11),
-  cpfAtendente CHAR(11),
+-- CREATE TABLE ATENDE(
+--   cpfCliente CHAR(11),
+--   cpfAtendente CHAR(11),
 
-  PRIMARY KEY (cpfCliente, cpfAtendente),
-  FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf),
-  FOREIGN KEY (cpfAtendente) REFERENCES ATENDENTE(cpf)
-); */
+--   PRIMARY KEY (cpfCliente, cpfAtendente),
+--   FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf),
+--   FOREIGN KEY (cpfAtendente) REFERENCES ATENDENTE(cpf)
+-- );
 
 INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("05278819022", "27510474086");
 INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("16252235016", "97246412018");
@@ -320,21 +320,143 @@ INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("87786749055", "19902570038"
 INSERT INTO ATENDE(cpfCliente, cpfAtendente) VALUES("55456515008", "00563807040");
 
 
-/* CREATE TABLE FORNECEDOR(
-  cnpj CHAR(14),
-  telefone VARCHAR(15),
-  nome VARCHAR(50),
+-- CREATE TABLE FORNECEDOR(
+--   cnpj CHAR(14),
+--   telefone VARCHAR(15),
+--   nome VARCHAR(50),
   
-  PRIMARY KEY (cnpj)
-); */
+--   PRIMARY KEY (cnpj)
+-- );
 
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("98159947000144", "+553255865519", "Café do Pantanal");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("81406585000146", "+553473414541", "Douglas Alimentos");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("71425396000167", "+555459708223", "Ken Pescados");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("74310971000174", "+553729062883", "Marco's Sucos");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("81309908000183", "+553123573107", "Daniel Bolos");
-INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("83020899000131", "+555144720181", "Matsukão Rações");
+INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("83020899000131", "+555144720181", "Matheus Rações");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("74947355000129", "+553757953886", "Mate Organico");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("47735938000113", "+556262309332", "Zedi Comida Processada");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("52111516000107", "+551157123629", "Granja da Familia");
 INSERT INTO FORNECEDOR(cnpj, telefone, nome) VALUES("29412751000105", "+555437737043", "Quitandas da Vovó");
+
+
+-- CREATE TABLE PRODUTO(
+--   codigo INTEGER,
+--   dataVencimento DATE,
+--   preco DECIMAL(10,2),
+--   cnpjFornecedor CHAR(14),
+
+--   FOREIGN KEY (cnpjFornecedor) REFERENCES FORNECEDOR(cnpj),
+--   PRIMARY KEY (codigo)
+-- );
+
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(0, '2020-12-25', 20.99, "98159947000144");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(1, '2020-12-25', 40.00, "98159947000144");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(2, '2021-01-10', 25.00, "81406585000146");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(3, '2021-01-10', 30.00, "81406585000146");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(4, '2020-11-30', 22.50, "71425396000167");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(5, '2021-11-30', 5.00, "74310971000174");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(6, '2020-11-25', 15.90, "81309908000183");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(7, '2021-02-18', 19.90, "83020899000131");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(8, '2021-06-01', 6.55, "74947355000129");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(9, '2021-01-01', 24.90, "47735938000113");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(10, '2020-12-10', 3.30, "52111516000107");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(11, '2020-12-01', 15.00, "29412751000105");
+INSERT INTO PRODUTO(codigo, dataVencimento, preco, cnpjFornecedor) VALUES(12, '2020-12-01', 10.00, "29412751000105");
+
+
+-- CREATE TABLE PEDIDO(
+--   cpfCliente CHAR(11),
+--   numero INTEGER,
+--   estado VARCHAR(20),
+--   data DATE,
+--   idEndereco INTEGER,
+--   cpfEntregador VARCHAR(11),
+
+--   FOREIGN KEY (cpfEntregador) REFERENCES ENTREGADOR(cpf),
+--   FOREIGN KEY (idEndereco) REFERENCES ENDERECO(id),
+
+--   PRIMARY KEY (cpfCliente, numero),
+--   FOREIGN KEY (cpfCliente) REFERENCES CLIENTE(cpf)
+-- );
+
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("05278819022", 0, "PAGO", '2020-11-11', NULL, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("16252235016", 1, "PAGO", '2020-11-12', NULL, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("03290472051", 2, "ENTREGUE", '2020-11-13', 2, "19517847076");
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("32700924070", 3, "ENTREGUE", '2020-11-13', 3, "32415583049");
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("56008935071", 4, "PAGO", '2020-11-13', NULL, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("35688009004", 5, "ENTREGUE", '2020-11-16', 5, "68744115008");
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("49186036025", 6, "PAGO", '2020-11-16', NULL, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("52342455003", 7, "PAGO", '2020-11-17', NULL, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("87786749055", 8, "ESPERANDOENTREGADOR", '2020-11-17', 8, NULL);
+INSERT INTO PEDIDO(cpfCliente, numero, estado, data, idEndereco, cpfEntregador) VALUES("32700924070", 9, "AGUARDANDOPAGAMENTO", '2020-11-18', 11, NULL);
+
+
+-- CREATE TABLE TEM(
+--   codigoProduto INTEGER,
+--   cpfCliente CHAR(11),
+--   numeroPedido INTEGER,
+
+--   PRIMARY KEY (codigoProduto, cpfCliente, numeroPedido),
+--   FOREIGN KEY (codigoProduto) REFERENCES PRODUTO(codigo),
+--   FOREIGN KEY (cpfCliente, numeroPedido) REFERENCES PEDIDO(cpfCliente, numero)
+-- );
+
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "05278819022", 0);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "16252235016", 1);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "16252235016", 1);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "03290472051", 2);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "03290472051", 2);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "03290472051", 2);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "32700924070", 3);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "32700924070", 3);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "32700924070", 3);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "32700924070", 3);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "56008935071", 4);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "56008935071", 4);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "56008935071", 4);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "56008935071", 4);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "56008935071", 4);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(5, "35688009004", 5);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(5, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(6, "49186036025", 6);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(5, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(6, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(7, "52342455003", 7);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(5, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(6, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(7, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(8, "87786749055", 8);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(0, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(1, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(2, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(3, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(4, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(5, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(6, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(7, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(8, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(9, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(10, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(11, "32700924070", 9);
+INSERT INTO TEM(codigoProduto, cpfCliente, numeroPedido) VALUES(12, "32700924070", 9);
