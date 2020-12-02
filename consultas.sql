@@ -70,7 +70,7 @@ WHERE f.cpf = a.cpfAtendente
 GROUP BY a.cpfAtendente;
 
 /*
- Turnos que cada funcionario trabalha
+ Quantos turnos que cada funcionario trabalha
 */
 
 SELECT f.nome, count(tem.cpf) as turnos
